@@ -21,15 +21,14 @@ public static function mdlListarUsuario(){
     return $listarUsuario;
 }
 
-public static function mdlGuardarUsuario($Nombres, $Apellidos, $Correo, $Password){
+public static function mdlGuardarUsuario($Correo,$Password){
     $mensaje = "";  
     try {
         // Cifrar la contraseña antes de guardarla en la base de datos
         $password_cifrado = password_hash($Password, PASSWORD_DEFAULT);
 
-        $respuestaUsuario = Conexion::conectar()->prepare("INSERT INTO usuarios(Nombres, Apellidos, Correo, Password) VALUES(:Nombres, :Apellidos, :Correo, :Password)");
-        $respuestaUsuario->bindParam(":Nombres", $Nombres);
-        $respuestaUsuario->bindParam(":Apellidos", $Apellidos);
+        $respuestaUsuario = Conexion::conectar()->prepare("INSERT INTO usuarios(correo_electronico, contrasena) VALUES(:Nombres, :Apellidos, :correo_electronico, :Password)");
+    
         $respuestaUsuario->bindParam(":Correo", $Correo);
         $respuestaUsuario->bindParam(":Password", $password_cifrado);
         

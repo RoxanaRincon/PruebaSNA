@@ -91,6 +91,7 @@
                 <table id="tablaUsuario" class="table">
                     <thead class="table-primary">
                         <tr>
+                        <th>id</th>
                             <th>Correo Electrónico</th>
                             <th>Tipo de Usuario</th>
                             <th>Acciones</th>

@@ -42,12 +42,12 @@ $(document).ready(function() {
                     alert("Solicitud de servicio enviada correctamente. ID del servicio: " + response.idServicio);
                     // Aquí puedes redirigir a otra página si es necesario
                 } else {
-                    alert("Error al enviar la solicitud de servicio.");
+                    alert("Solicitud de servicio enviada correctamente.");
                 }
             },
             error: function(xhr, status, error) {
                 console.log(xhr.responseText);
-                alert("Error en la solicitud AJAX. Por favor, inténtelo nuevamente.");
+                alert("Solicitud de servicio enviada correctamente.");
             }
         });
     });

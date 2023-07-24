@@ -16,7 +16,7 @@ class CtrUsuario {
     }
 
     public function ctrGuardarUsuario() {
-        $respuestaUsuarioM = mdlUsuario::mdlGuardarUsuario($this->Nombres, $this->Apellidos, $this->Correo, $this->Password);
+        $respuestaUsuarioM = mdlUsuario::mdlGuardarUsuario($this->Correo, $this->Password);
         echo json_encode($respuestaUsuarioM);
     }
 
@@ -29,7 +29,6 @@ class CtrUsuario {
         $respuestaUsuarioM = mdlUsuario::mdlEliminarUsuario($this->idUsuario);
         echo json_encode($respuestaUsuarioM);
     }
-    
     public function ctrIniciarSesion($correo, $password) {
         // Lógica para implementar el inicio de sesión
         $usuario = MdlUsuario::mdlIniciarSesion($correo, $password);
@@ -60,12 +59,10 @@ if(isset($_POST["listarDatosUsuario"]) && $_POST["listarDatosUsuario"] == "ok"){
 
 }
 
-if (isset($_POST["guardarNombres"], $_POST["guardarApellidos"], $_POST["guardarCorreo"], $_POST["guardarPassword"])) {
+if (isset($_POST["guardarCorreo"], $_POST["guardarPassword"])) {
     $objUsuario = new ctrUsuario();
-    $objUsuario->Nombres = $_POST["guardarNombres"];
-    $objUsuario->Apellidos = $_POST["guardarApellidos"];
     $objUsuario->Correo = $_POST["guardarCorreo"];
-    $objUsuario->Password = $_POST["guardarPassword"]; // Agregar el campo de contraseña al objeto ctrUsuario
+    $objUsuario->Password = $_POST["guardarPassword"];
     $objUsuario->ctrGuardarUsuario();
 }
 
