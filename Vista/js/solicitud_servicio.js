@@ -19,7 +19,7 @@ $(document).ready(function() {
         if (!Array.isArray(cantidadAutomotores)) {
             cantidadAutomotores = [cantidadAutomotores];
         }
-
+  console.log(numeroServicio,fecha,empresa,tipoServicio,cantidadAutomotores,automotores,tipoServicio);
         // Enviar los datos del formulario al controlador mediante AJAX
         $.ajax({
             url: "../Controlador/ServicioControlador.php", // Reemplaza esto con la ruta a tu controlador de servicio
@@ -35,6 +35,8 @@ $(document).ready(function() {
                 cantidadAutomotores: cantidadAutomotores
             },
             success: function(response) {
+
+                console.log(response);
                 // Procesar la respuesta del controlador
                 if (response && response.idServicio) {
                     alert("Solicitud de servicio enviada correctamente. ID del servicio: " + response.idServicio);
