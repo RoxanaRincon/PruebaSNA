@@ -68,11 +68,45 @@
     </nav>
 
     <div class="container">
-       
-
-     FORMULARIO PARA REGISTRO SOLICITUD 
-
-      
+    <h2 class="mb-4">Formulario de Solicitud de Servicio</h2>
+        <form id="formularioServicio">
+            <div class="form-group">
+                <label for="numeroServicio">Número de servicio:</label>
+                <input type="text" class="form-control" id="numeroServicio" name="numeroServicio" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" class="form-control" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input type="number" class="form-control" id="valor" name="valor" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="empresa">Empresa:</label>
+                <input type="text" class="form-control" id="empresa" name="empresa" required>
+            </div>
+            <div class="form-group">
+                <label for="tipoServicio">Tipo de Servicio:</label>
+                <select class="form-control" id="tipoServicio" name="tipoServicio" required>
+                    <option value="">Seleccione un tipo de servicio</option>
+                    <option value="Carga">Carga</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="automotores">Automotores:</label>
+                <select multiple class="form-control" id="automotores" name="automotores[]" required>
+                    <!-- Aquí puedes cargar dinámicamente los automotores desde la base de datos si es necesario -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cantidadAutomotores">Cantidad de Automotores:</label>
+                <input type="number" class="form-control" id="cantidadAutomotores" name="cantidadAutomotores[]" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+        </form>
     </div>
     </div>
 </body>
