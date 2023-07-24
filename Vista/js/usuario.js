@@ -8,7 +8,7 @@ $(function(){
 
     listarDatosUsuario();
 
-    // ------------------------- funcion para listar los empleados -----------
+    // ------------------------- funcion para listar los usuarios -----------
     function listarDatosUsuario() {
         var objData = new FormData();
         objData.append("listarDatosUsuario", "ok");
@@ -29,11 +29,11 @@ $(function(){
             console.log(respuesta)
             function listarUsuario(item, index) {
                 objBotones = '<div class="btn-group">';
-                objBotones += '<button id="btn-EditarUsuario" type="button" class="btn btn-secondary" usuario="' + item.id_usuario  + '" Correo="' + item.correo_electronico + '" password="' + item.contrasena + '"><i class="bi bi-pencil-square"></i></button>';
+                objBotones += '<button id="btn-EditarUsuario" type="button" class="btn btn-secondary" usuario="' + item.id_usuario  + '" Nombres="' + item.nombres + '" Apellidos="' + item.apellidos + '" Correo="' + item.correo_electronico + '"><i class="bi bi-pencil-square"></i></button>';
                 objBotones += '<button id="btn-eliminarUsuario" type="button" class="btn btn-dark" usuario="' + item.id_usuario  + '"><i class="bi bi-trash"></i></button>';
                 objBotones += '</div>';
             
-                dataSetUsuario.push([item.id_usuario, item.correo_electronico, item.Correo, objBotones]);
+                dataSetUsuario.push([item.id_usuario, item.correo_electronico, item.tipo_usuario, objBotones]);
                 console.log(dataSetUsuario);
             }
             
@@ -53,47 +53,42 @@ $(function(){
             data: dataSetUsuario
         })
     }
-
-    // ----------------------------- Guardar nuevo usuario ---------------------- 
-    $("#btnGuardarUsuario").on("click", function() {
-        var Nombres = $("#txt_nombreusuario").val();
-        var Apellidos = $("#txt_apellidousuario").val();
+    
+    $("#btnGuardarUsuario").on("click", function () {
         var Correo = $("#txt_correo").val();
         var Password = $("#txt_password").val(); // Obtener la contraseña ingresada
     
-        var objData = new FormData();
-        objData.append("guardarNombres", Nombres);
-        objData.append("guardarApellidos", Apellidos);
-        objData.append("guardarCorreo", Correo);
-        objData.append("guardarPassword", Password); // Agregar la contraseña al objeto FormData
+
+        console.log(Correo,Password);
+        var objData = {
+            guardarCorreo: Correo,
+            guardarPassword: Password,
+        };
     
         $.ajax({
             url: "../Controlador/UsuarioControlador.php",
             type: "post",
             dataType: "json",
             data: objData,
-            cache: false,
-            contentType: false,
-            processData: false
-        }).done(function(respuesta) {
-            $("#txt_nombreusuario").val("");
-            $("#txt_apellidousuario").val("");
-            $("#txt_correo").val("");
-            $("#txt_password").val(""); // Limpiar el campo de contraseña
+        })
+            .done(function (respuesta) {
+                $("#txt_correo").val("");
+                $("#txt_password").val(""); // Limpiar el campo de contraseña
     
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Usuario Registrado Correctamente',
-                showConfirmButton: false,
-                timer: 1500
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Usuario Registrado Correctamente",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+    
+                listarDatosUsuario();
             })
-            listarDatosUsuario();
-    
-        }).fail(function(xhr, status, error) {
-            // Manejar el error en caso de que falle la petición AJAX
-            console.log(xhr, status, error);
-        });
+            .fail(function (xhr, status, error) {
+                // Manejar el error en caso de que falle la petición AJAX
+                console.log(xhr, status, error);
+            });
     });
 
     //------------------------- Editar Usuario ----------------------
@@ -122,12 +117,12 @@ $(function(){
        // $("#contenedorEditarUsuario").hide();
 
         if (formularioEditar == false){
-            $("#contenedorEditarUsuarior").fadeIn(1000);
+            $("#contenedorEditarUsuario").fadeIn(1000);
             
             formularioEditar = true;
             //cargarDatosSelectCategoriaformEdit();
         } else {
-            $("#contenedorEditarUsuarior").hide();
+            $("#contenedorEditarUsuario").hide();
           
             formularioEditar = false;
         }

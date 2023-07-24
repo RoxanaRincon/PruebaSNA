@@ -5,7 +5,7 @@ $(document).ready(function() {
         var formData = $(this).serialize();
         // Enviar los datos del formulario al controlador mediante AJAX
         $.ajax({
-            url: "../controlador/usuarioControlador.php", // Reemplaza "ruta/a/tu_controlador.php" por la URL real de tu controlador
+            url: "../Controlador/UsuarioControlador.php", // Reemplaza "ruta/a/tu_controlador.php" por la URL real de tu controlador
             method: "POST",
             data: formData,
             dataType: "json",
@@ -13,7 +13,7 @@ $(document).ready(function() {
                 // Aquí puedes manejar la respuesta del servidor
                 if (response === "ok") {
                     // Redireccionar a la página de inicio o al dashboard
-                    window.location.href = "../Vista/tarea.php"; // Reemplaza "ruta/a/dashboard.php" por la URL real de tu dashboard
+                    window.location.href = "../Vista/FormularioSolicitud.php"; // Reemplaza "ruta/a/dashboard.php" por la URL real de tu dashboard
                 } else {
                     alert("Usuario o contraseña incorrectos");
                 }
