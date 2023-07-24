@@ -30,8 +30,20 @@
 
 <body>
 
-<div class="container">
-    <h2>Iniciar Sesión</h2>
+<br>
+<div class="container mt-3">
+        <h2 class=" text-center link-primary">EMPRESA DE TRANSPORTE</a></h2>
+        <p class=" text-center"><strong ><em>Bienvenidos sean todos!</em></strong></p>
+        <img src="Gifs/giphy.gif" class="rounded float-start imagenpequeña" style="width: 150px;">
+        <br><br>
+        <br><br>
+        
+        <br><br>
+        <div class="contenedorInfo">
+    </div>
+<div class="container col-sm-4">
+    <h2 class=" text-center link-danger">Iniciar Sesión</h2>
+    <br>
     <form id="formLogin">
         <div class="form-group">
             <label for="correo">Correo electrónico:</label>
@@ -41,7 +53,11 @@
             <label for="password">Contraseña:</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <br>
+        <center>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </center>
+        
     </form>
 </div>
 
