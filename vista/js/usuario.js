@@ -152,6 +152,8 @@ $(function(){
             processData: false
         }).done(function(respuesta) {
 
+
+            console.log(respuesta);
             $("#txt_EditCorreo").val("");
             $("#contenedorEditarUsuario").hide();
 

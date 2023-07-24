@@ -77,6 +77,6 @@ if (isset($_POST["updateCorreo"], $_POST["updatePassword"],$_POST["updateIdUsuar
     $objPersonaje = new ctrUsuario();
     $objPersonaje->Correo = $_POST["updateCorreo"];
     $objPersonaje->idUsuario = $_POST["updateIdUsuario"];
-    $objPersonaje->Password = $_POST["updatePassword"]; // Agregar el campo de contraseña al objeto ctrUsuario
+    $objPersonaje->Password = $_POST["updatePassword"]; 
     $objPersonaje->ctrUpdateUsuario();
 }
