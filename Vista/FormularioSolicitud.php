@@ -26,7 +26,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
+   
 
 
     <script src="js/solicitud_servicio.js"></script>
