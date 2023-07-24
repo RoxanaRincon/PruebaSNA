@@ -35,6 +35,16 @@ class CtrServicio {
         // Enviamos la lista de servicios solicitados como respuesta al cliente
         echo json_encode($serviciosSolicitados);
     }
+
+    public function ctrListarAutomotores() {
+        // Llamamos al modelo para obtener la lista de automotores
+        $modeloAutomotor = new AutomotorModelo();
+        $automotores = $modeloAutomotor->listarAutomotores();
+
+        // Enviamos la lista de automotores como respuesta al cliente
+        echo json_encode($automotores);
+    }
+
 }
 
 // Verificar si se ha enviado el formulario de solicitud de servicio
@@ -47,4 +57,11 @@ if (isset($_POST["numeroServicio"], $_POST["fecha"], $_POST["valor"], $_POST["em
 if (isset($_POST["listarServiciosSolicitados"]) && $_POST["listarServiciosSolicitados"] === "ok") {
     $objServicio = new CtrServicio();
     $objServicio->ctrListarServiciosSolicitados();
+}
+
+
+// Verificar si se ha enviado la solicitud para listar los automotores
+if (isset($_POST["listarAutomotores"]) && $_POST["listarAutomotores"] === "ok") {
+    $objAutomotor = new CtrAutomotor();
+    $objAutomotor->ctrListarAutomotores();
 }

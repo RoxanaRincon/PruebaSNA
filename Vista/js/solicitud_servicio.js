@@ -1,6 +1,6 @@
 $(document).ready(function() {
     // Cargar automotores desde la base de datos (puedes hacer una petición AJAX si es necesario)
-
+ cargarAutomotores();
     // Enviar el formulario mediante AJAX
     $("#formularioServicio").submit(function(event) {
         event.preventDefault();
@@ -48,4 +48,37 @@ $(document).ready(function() {
             }
         });
     });
+
+
+
+// Función para cargar los automotores desde el servidor
+function cargarAutomotores() {
+    $.ajax({
+        url: "../Controlador/AutomotorControlador.php", // Reemplaza esto con la ruta a tu controlador de automotores
+        type: "POST",
+        dataType: "json",
+        data: {
+            listarAutomotores: "ok"
+        },
+        success: function(response) {
+
+            console.log(response);
+            // Procesar la respuesta del controlador y llenar el select con los automotores
+            if (response && response.length > 0) {
+                let selectAutomotores = $("#automotores");
+                selectAutomotores.empty();
+
+                response.forEach(function(automotor) {
+                    let option = "<option value='" + automotor.id_automotor + "'>" + automotor.placa + "</option>";
+                    selectAutomotores.append(option);
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+            alert("Error al cargar los automotores. Por favor, inténtelo nuevamente.");
+        }
+    });
+}
+
 });
