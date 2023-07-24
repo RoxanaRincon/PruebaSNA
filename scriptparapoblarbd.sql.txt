@@ -1,0 +1,47 @@
+-- Insertar registros de prueba en la tabla 'tipos_automotor'
+INSERT INTO `tipos_automotor` (`tipo`) VALUES
+('Automóvil'),
+('Camión'),
+('Motocicleta');
+
+-- Insertar registros de prueba en la tabla 'empresas'
+INSERT INTO `empresas` (`nombre`) VALUES
+('Empresa A'),
+('Empresa B'),
+('Empresa C');
+
+-- Insertar registros de prueba en la tabla 'usuarios'
+INSERT INTO `usuarios` (`correo_electronico`, `contrasena`, `tipo_usuario`) VALUES
+('usuario1@example.com', 'contrasena1', 'Cliente'),
+('usuario2@example.com', 'contrasena2', 'Gerente');
+
+-- Insertar registros de prueba en la tabla 'automotores'
+INSERT INTO `automotores` (`id_tipo_automotor`, `placa`, `color`, `serial_motor`, `toneladas`, `valor_km`) VALUES
+(1, 'ABC123', 'Rojo', '1234567890', 1.5, 100.50),
+(2, 'XYZ987', 'Azul', '0987654321', 3.2, 150.75);
+
+-- Insertar registros de prueba en la tabla 'servicios_solicitados'
+INSERT INTO `servicios_solicitados` (`id_empresa`, `fecha_solicitud`, `valor`) VALUES
+(1, '2023-07-24', 250.00),
+(2, '2023-07-25', 180.00);
+
+-- Insertar registros de prueba en la tabla 'detalles_servicio'
+INSERT INTO `detalles_servicio` (`id_servicio`, `id_automotor`, `cantidad`) VALUES
+(1, 1, 2),
+(1, 2, 1),
+(2, 1, 3);
+
+-- Insertar registros de prueba en la tabla 'conductores'
+INSERT INTO `conductores` (`nombre`, `tipo_contrato`) VALUES
+('Juan Pérez', 'Planta'),
+('María Gómez', 'Flotante');
+
+-- Insertar registros de prueba en la tabla 'clientes'
+INSERT INTO `clientes` (`nombre_empresa`, `id_usuario`) VALUES
+('Empresa A', 1),
+('Empresa C', 2);
+
+-- Insertar registros de prueba en la tabla 'gerentes'
+INSERT INTO `gerentes` (`nombre_completo`, `id_usuario`) VALUES
+('Ana López', 2),
+('Carlos Ramírez', 1);
