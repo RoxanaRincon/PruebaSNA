@@ -1,6 +1,7 @@
 $(document).ready(function() {
     // Cargar automotores desde la base de datos (puedes hacer una petición AJAX si es necesario)
  cargarAutomotores();
+ cargarEmpresas();
     // Enviar el formulario mediante AJAX
     $("#formularioServicio").submit(function(event) {
         event.preventDefault();
@@ -77,6 +78,30 @@ function cargarAutomotores() {
         error: function(xhr, status, error) {
             console.log(xhr.responseText);
             alert("Error al cargar los automotores. Por favor, inténtelo nuevamente.");
+        }
+    });
+}
+
+function cargarEmpresas() {
+    $.ajax({
+        url: "../Controlador/EmpresasControlador.php", // Reemplaza con la ruta a tu controlador que obtiene la lista de empresas
+        type: "POST",
+        dataType: "json",
+        data: {
+            obtenerEmpresas: "ok"
+        },
+        success: function(response) {
+            // Procesar la respuesta del servidor y agregar las opciones al campo de selección
+            if (response && response.length > 0) {
+                let campoEmpresas = $("#empresa");
+                response.forEach(function(empresa) {
+                    campoEmpresas.append("<option value='" + empresa.id_empresa + "'>" + empresa.nombre + "</option>");
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
+            alert("Error al cargar las empresas. Por favor, inténtelo nuevamente.");
         }
     });
 }

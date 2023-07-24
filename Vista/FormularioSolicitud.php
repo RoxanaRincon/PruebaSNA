@@ -84,8 +84,11 @@
             </div>
             <div class="form-group">
                 <label for="empresa">Empresa:</label>
-                <input type="text" class="form-control" id="empresa" name="empresa" required>
-            </div>
+             <select class="form-control" id="empresa" name="empresa" required>
+        <option value="">Seleccione una empresa</option>
+        <!-- Opciones de empresas se cargarán dinámicamente aquí -->
+             </select>
+                </div>
             <div class="form-group">
                 <label for="tipoServicio">Tipo de Servicio:</label>
                 <select class="form-control" id="tipoServicio" name="tipoServicio" required>
