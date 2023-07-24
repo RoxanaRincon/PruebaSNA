@@ -28,8 +28,8 @@
 
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
 
-    <script src='js/tarea.js'></script>
-   
+
+    <script src="js/solicitud_servicio.js"></script>
 
     
 </head>
@@ -49,13 +49,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="FormularioSolicitud.php">Tareas</a>
+                        <a class="nav-link" href="FormularioSolicitud.php">Solicitud de Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listadoServicios.php">Usuarios</a>
+                        <a class="nav-link" href="listadoServicios.php">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="usuario.php">Usuarios</a>
+                        <a class="nav-link" href="usuario.php">Gestion de usuarios</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

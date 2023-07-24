@@ -42,14 +42,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="FormularioSolicitud.php">Tareas</a>
+                <li class="nav-item">
+                        <a class="nav-link" href="FormularioSolicitud.php">Solicitud de Servicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listadoServicios.php">Usuarios</a>
+                        <a class="nav-link" href="listadoServicios.php">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="usuario.php">Usuarios</a>
+                        <a class="nav-link" href="usuario.php">Gestion de usuarios</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
