@@ -25,9 +25,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-
-    <script src='js/tarea.js'></script>
+ 
    
 
     
@@ -67,29 +65,30 @@
     </nav>
 
     <div class="container">
-       
-
-     TABLA DE SERVICIOS LISTAR SERVICIOS 
+        <h2>Tabla de Servicios</h2>
 
         <div class="col-sm-12" id="contenedorTabla">
-            <table id="tablaActividad" class="table">
+            <table id="tablaServicios" class="table">
                 <thead class="table-info">
                     <tr>
-                        <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Prioridad</th>
-                        <th>Tiempo</th>
-                        <th>Usuario</th>
+                        <th>Numero de Servicio</th>
+                        <th>Fecha de Solicitud</th>
+                        <th>Valor</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="datosTablaActividad">
+                <tbody id="datosTablaServicios">
+
+                    <!-- Aquí se cargarán los datos de la tabla de servicios mediante JavaScript -->
 
                 </tbody>
             </table>
-
         </div>
     </div>
+
+    <!-- JavaScript para cargar la tabla de servicios y realizar acciones -->
+    <script src="js/listadoServicios.js"></script>
+    
     </div>
 </body>
 </html>
