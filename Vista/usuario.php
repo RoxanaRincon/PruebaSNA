@@ -87,6 +87,33 @@
                 </div>
             </div>
 
+
+
+
+
+            <div class="col-sm-4" id="contenedorEditarUsuario" style="display: none;">
+            <div class="container">
+                <form method="post" class="needs-validation">
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Ingrese el Correo </label>
+                        <input type="text" class="form-control" id="txt_EditCorreo" placeholder="Ingrese su Correo" name="txt_EditCorreo" required>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+
+                    <div class="mb-3">
+                    <label for="pwd" class="form-label">Contraseña:</label>
+                    <input type="password" class="form-control" id="txt_EditPassword" placeholder="Ingrese la nueva contraseña" name="txt_EditPassword" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                    <button type="button" id="btnEditarUsuario" Producto="" class="btn btn-primary">Editar Usuario</button>
+                    <button type="button" id="btnCancelar" Producto="" class="btn btn-success">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
             <div class="col-sm-12" id="contenedorTablaUsuario">
                 <table id="tablaUsuario" class="table">
                     <thead class="table-primary">

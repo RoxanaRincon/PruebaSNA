@@ -29,7 +29,7 @@ $(function(){
             console.log(respuesta)
             function listarUsuario(item, index) {
                 objBotones = '<div class="btn-group">';
-                objBotones += '<button id="btn-EditarUsuario" type="button" class="btn btn-secondary" usuario="' + item.id_usuario  + '" Nombres="' + item.nombres + '" Apellidos="' + item.apellidos + '" Correo="' + item.correo_electronico + '"><i class="bi bi-pencil-square"></i></button>';
+                objBotones += '<button id="btn-EditarUsuario" type="button" class="btn btn-secondary" usuario="' + item.id_usuario  + '" Correo="' + item.correo_electronico + '"><i class="bi bi-pencil-square"></i></button>';
                 objBotones += '<button id="btn-eliminarUsuario" type="button" class="btn btn-dark" usuario="' + item.id_usuario  + '"><i class="bi bi-trash"></i></button>';
                 objBotones += '</div>';
             
@@ -98,13 +98,8 @@ $(function(){
         $("#contenedorFormularios").hide();
         $("#contenedorEditarUsuario").show();
         var usuario = $(this).attr("usuario");
-        var Nombres = $(this).attr("Nombres");
-        var Apellidos = $(this).attr("Apellidos");
         var Correo = $(this).attr("Correo");
         
-
-        $("#txt_EditNombre").val(Nombres);
-        $("#txt_EditApellido").val(Apellidos);
         $("#txt_EditCorreo").val(Correo);
         $("#btnEditarUsuario").attr("usuario", usuario);
         
@@ -135,18 +130,17 @@ $(function(){
     //editar  registro de usuario
     $("#btnEditarUsuario").on("click", function(){
         var idUsuario = usuarioActual;
-        var Nombres = $("#txt_EditNombre").val();
-        var Apellidos = $("#txt_EditApellido").val();
         var Correo =  $("#txt_EditCorreo").val();
         var Password =  $("#txt_EditPassword").val(); // Obtener el valor de la contraseña
     
         var registroEditado = new FormData();
-        registroEditado.append("updateNombres", Nombres);
-        registroEditado.append("updateApellidos", Apellidos);
+
         registroEditado.append("updateCorreo", Correo);
         registroEditado.append("updatePassword", Password); // Agregar la contraseña al FormData
         registroEditado.append("updateIdUsuario", idUsuario);
     
+
+        console.log(idUsuario,Correo,Password);
    
         $.ajax({
             url: "../Controlador/UsuarioControlador.php",
@@ -158,11 +152,7 @@ $(function(){
             processData: false
         }).done(function(respuesta) {
 
-             $("#txt_EditNombre").val("");
-             $("#txt_EditApellido").val("");
             $("#txt_EditCorreo").val("");
-           
-            
             $("#contenedorEditarUsuario").hide();
 
 
