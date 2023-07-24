@@ -27,7 +27,7 @@ public static function mdlGuardarUsuario($Correo,$Password){
         // Cifrar la contraseña antes de guardarla en la base de datos
         $password_cifrado = password_hash($Password, PASSWORD_DEFAULT);
 
-        $respuestaUsuario = Conexion::conectar()->prepare("INSERT INTO usuarios(correo_electronico, contrasena) VALUES(:Nombres, :Apellidos, :correo_electronico, :Password)");
+        $respuestaUsuario = Conexion::conectar()->prepare("INSERT INTO usuarios(correo_electronico, contrasena) VALUES(:Correo,:Password)");
     
         $respuestaUsuario->bindParam(":Correo", $Correo);
         $respuestaUsuario->bindParam(":Password", $password_cifrado);
@@ -46,17 +46,15 @@ public static function mdlGuardarUsuario($Correo,$Password){
 }
 
 // Funcion editar usuario
-public static function mdlUpdateUsuario($Nombres, $Apellidos, $Correo, $Password, $idUsuario){
+public static function mdlUpdateUsuario($Correo, $Password, $idUsuario){
     $mensaje = "";
     try {
         // Cifrar la contraseña antes de guardarla en la base de datos
         $password_cifrado = password_hash($Password, PASSWORD_DEFAULT);
 
-        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET Nombres = :Nombres, Apellidos = :Apellidos, Correo = :Correo, Password = :Password WHERE idUsuario = :id"); 
-        $objRespuesta->bindParam(":Nombres", $Nombres);
-        $objRespuesta->bindParam(":Apellidos", $Apellidos);
-        $objRespuesta->bindParam(":Correo", $Correo);
-        $objRespuesta->bindParam(":Password", $password_cifrado);
+        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET Correo = :Correo, contrasena = :Password WHERE id_usuario = :id"); 
+        $respuestaUsuario->bindParam(":Correo", $Correo);
+        $respuestaUsuario->bindParam(":Password", $password_cifrado);
         $objRespuesta->bindParam(":id", $idUsuario);
         $objRespuesta->execute();
 

@@ -21,7 +21,7 @@ class CtrUsuario {
     }
 
     public function ctrUpdateUsuario() {
-        $respuestaUsuarioM = mdlUsuario::mdlUpdateUsuario($this->Nombres, $this->Apellidos, $this->Correo, $this->Password, $this->idUsuario);
+        $respuestaUsuarioM = mdlUsuario::mdlUpdateUsuario( $this->Correo, $this->Password, $this->idUsuario);
         echo json_encode($respuestaUsuarioM);
     }
 

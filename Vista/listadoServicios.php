@@ -1,4 +1,9 @@
+<?php
+// tarea.php
 
+include_once "sesion.php";
+//cometar si se necesita entrar por la url directo 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
