@@ -73,10 +73,8 @@ if(isset($_POST["eliminarUsuario"])){
 }
 
 
-if (isset($_POST["updateNombres"], $_POST["updateApellidos"], $_POST["updateCorreo"], $_POST["updateIdUsuario"], $_POST["updatePassword"])) {
+if (isset($_POST["updateCorreo"], $_POST["updatePassword"],$_POST["updateIdUsuario"])) {
     $objPersonaje = new ctrUsuario();
-    $objPersonaje->Nombres = $_POST["updateNombres"];
-    $objPersonaje->Apellidos = $_POST["updateApellidos"];
     $objPersonaje->Correo = $_POST["updateCorreo"];
     $objPersonaje->idUsuario = $_POST["updateIdUsuario"];
     $objPersonaje->Password = $_POST["updatePassword"]; // Agregar el campo de contraseña al objeto ctrUsuario

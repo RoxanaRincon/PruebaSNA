@@ -52,7 +52,7 @@ public static function mdlUpdateUsuario($Correo, $Password, $idUsuario){
         // Cifrar la contraseña antes de guardarla en la base de datos
         $password_cifrado = password_hash($Password, PASSWORD_DEFAULT);
 
-        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET Correo = :Correo, contrasena = :Password WHERE id_usuario = :id"); 
+        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET correo_electronico = :Correo, contrasena = :Password WHERE id_usuario = :id"); 
         $respuestaUsuario->bindParam(":Correo", $Correo);
         $respuestaUsuario->bindParam(":Password", $password_cifrado);
         $objRespuesta->bindParam(":id", $idUsuario);
