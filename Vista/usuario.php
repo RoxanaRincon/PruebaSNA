@@ -82,6 +82,16 @@
                             <div class="valid-feedback">Valid.</div>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
+                        <div class="mb-3">
+                            <label for="tipoUsuario" class="form-label">Tipo de Usuario:</label>
+                            <select class="form-control" id="txt_tipoUsuario" name="guardarTipoUsuario" required>
+                                <option value="Cliente">Cliente</option>
+                                <option value="Gerente">Gerente</option>
+                            </select>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+
                         <button type="button" id="btnGuardarUsuario" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
@@ -104,6 +114,18 @@
                     <div class="mb-3">
                     <label for="pwd" class="form-label">Contraseña:</label>
                     <input type="password" class="form-control" id="txt_EditPassword" placeholder="Ingrese la nueva contraseña" name="txt_EditPassword" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+
+                 <div class="mb-3">
+                    <label for="uname" class="form-label">Tipo de Usuario:</label>
+                    <select class="form-select" id="sel_tipoUsuario" name="sel_tipoUsuario" required>
+                        <option value="" selected disabled>Seleccione una opción</option>
+                        <option value="Cliente">Cliente</option>
+                        <option value="Gerente">Gerente</option>
+                    </select>
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>

@@ -56,22 +56,25 @@ $(function(){
     
     $("#btnGuardarUsuario").on("click", function () {
         var Correo = $("#txt_correo").val();
-        var Password = $("#txt_password").val(); // Obtener la contraseña ingresada
-    
+        var Password = $("#txt_password").val();
+        var TipoUsuario = $("#txt_tipoUsuario").val(); // Obtener el tipo de usuario seleccionado
 
-        console.log(Correo,Password);
         var objData = {
             guardarCorreo: Correo,
             guardarPassword: Password,
+            guardarTipoUsuario: TipoUsuario // Agregar el tipo de usuario al objeto objData
         };
     
+
+        console.log(TipoUsuario);
         $.ajax({
             url: "../Controlador/UsuarioControlador.php",
-            type: "post",
-            dataType: "json",
+            type: "POST",
+            dataType: "JSON",
             data: objData,
-        })
-            .done(function (respuesta) {
+        }).done(function (respuesta) {
+
+                console.log(respuesta);
                 $("#txt_correo").val("");
                 $("#txt_password").val(""); // Limpiar el campo de contraseña
     
@@ -84,8 +87,7 @@ $(function(){
                 });
     
                 listarDatosUsuario();
-            })
-            .fail(function (xhr, status, error) {
+            }).fail(function (xhr, status, error) {
                 // Manejar el error en caso de que falle la petición AJAX
                 console.log(xhr, status, error);
             });
@@ -99,7 +101,10 @@ $(function(){
         $("#contenedorEditarUsuario").show();
         var usuario = $(this).attr("usuario");
         var Correo = $(this).attr("Correo");
-        
+        var tipoUsuario = $(this).attr("tipo_usuario"); // Obtener el tipo de usuario del botón
+
+                                          
+       $("#sel_tipoUsuario").val(tipoUsuario); // Mostrar el tipo de usuario seleccionado en el formulario de edición
         $("#txt_EditCorreo").val(Correo);
         $("#btnEditarUsuario").attr("usuario", usuario);
         
@@ -132,15 +137,18 @@ $(function(){
         var idUsuario = usuarioActual;
         var Correo =  $("#txt_EditCorreo").val();
         var Password =  $("#txt_EditPassword").val(); // Obtener el valor de la contraseña
-    
+        var tipoUsuario = $("#sel_tipoUsuario").val();
+
+
         var registroEditado = new FormData();
 
         registroEditado.append("updateCorreo", Correo);
-        registroEditado.append("updatePassword", Password); // Agregar la contraseña al FormData
+        registroEditado.append("updatePassword", Password); 
+        registroEditado.append("updateTipoUsuario", tipoUsuario);// Agregar la contraseña al FormData
         registroEditado.append("updateIdUsuario", idUsuario);
     
 
-        console.log(idUsuario,Correo,Password);
+        console.log(idUsuario,Correo,Password,tipoUsuario);
    
         $.ajax({
             url: "../Controlador/UsuarioControlador.php",

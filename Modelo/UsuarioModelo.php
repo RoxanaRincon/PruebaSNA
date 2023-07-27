@@ -21,17 +21,21 @@ public static function mdlListarUsuario(){
     return $listarUsuario;
 }
 
-public static function mdlGuardarUsuario($Correo,$Password){
+
+public static function mdlGuardarUsuario($Correo, $Password, $TipoUsuario) {
     $mensaje = "";  
     try {
         // Cifrar la contraseña antes de guardarla en la base de datos
         $password_cifrado = password_hash($Password, PASSWORD_DEFAULT);
 
-        $respuestaUsuario = Conexion::conectar()->prepare("INSERT INTO usuarios(correo_electronico, contrasena) VALUES(:Correo,:Password)");
-    
+        $respuestaUsuario = Conexion::conectar()->prepare("INSERT INTO usuarios(correo_electronico, contrasena, tipo_usuario) VALUES(:Correo, :Password, :TipoUsuario)"); // Agregar :TipoUsuario a la consulta SQL
+
         $respuestaUsuario->bindParam(":Correo", $Correo);
         $respuestaUsuario->bindParam(":Password", $password_cifrado);
-        
+        $respuestaUsuario->bindParam(":TipoUsuario", $TipoUsuario); // Pasar el nuevo campo TipoUsuario
+
+     
+
         if ($respuestaUsuario->execute()) {
             $mensaje = "ok";
         } else {
@@ -46,21 +50,21 @@ public static function mdlGuardarUsuario($Correo,$Password){
 }
 
 // Funcion editar usuario
-public static function mdlUpdateUsuario($Correo, $Password, $idUsuario){
+public static function mdlUpdateUsuario($Correo, $Password, $TipoUsuario, $idUsuario) {
     $mensaje = "";
     try {
-        // Cifrar la contraseña antes de guardarla en la base de datos
-        $password_cifrado = password_hash($Password, PASSWORD_DEFAULT);
+        // Resto del código...
 
-        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET correo_electronico = :Correo, contrasena = :Password WHERE id_usuario = :id"); 
-        $respuestaUsuario->bindParam(":Correo", $Correo);
-        $respuestaUsuario->bindParam(":Password", $password_cifrado);
+        $objRespuesta = Conexion::conectar()->prepare("UPDATE usuarios SET correo_electronico = :Correo, contrasena = :Password, tipo_usuario = :TipoUsuario WHERE id_usuario = :id");
+        $objRespuesta->bindParam(":Correo", $Correo);
+        $objRespuesta->bindParam(":Password", $password_cifrado);
+        $objRespuesta->bindParam(":TipoUsuario", $TipoUsuario); // Agregar el tipo de usuario al query
         $objRespuesta->bindParam(":id", $idUsuario);
         $objRespuesta->execute();
 
         $mensaje = "ok";
 
-    } catch(Exception $e){
+    } catch (Exception $e) {
         $mensaje = $e;
     }
     return $mensaje;
@@ -70,7 +74,7 @@ public static function mdlUpdateUsuario($Correo, $Password, $idUsuario){
 public static function mdlEliminarUsuario($idUsuario){
     $mensaje = "";  
     try {
-        $respuestaUsuario = Conexion::conectar()->prepare("DELETE FROM usuarios WHERE idUsuario = :idUsuario");
+        $respuestaUsuario = Conexion::conectar()->prepare("DELETE FROM usuarios WHERE id_usuario = :idUsuario");
         $respuestaUsuario->bindParam(":idUsuario", $idUsuario);
         if($respuestaUsuario->execute()){
             $mensaje = "ok";
@@ -96,10 +100,8 @@ public static function mdlIniciarSesion($correo, $password) {
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario && password_verify($password, $usuario['contrasena'])) {
-            // La contraseña coincide, el usuario existe
             return $usuario;
         } else {
-            // El usuario o contraseña son incorrectos
             return false;
         }
     } catch (Exception $error) {
